@@ -1,0 +1,58 @@
+﻿@page
+@model BuyModel
+@{
+    ViewData["Title"] = "Придбати квиток";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        @if (Model.Show is null || Model.Show.SeatsLeft < 1)
+        {
+            
+                <h2 class="errormessage">
+                    @Model.ErrorMessage
+                </h2>
+                <form method="post" asp-page-handler="Back">
+                    <input type="submit" value="Повернутись на головну" />
+                </form>
+            
+        }
+
+        else
+        {
+            <h1>Придбати квиток</h1>
+            <ul>
+                <li><b> Кінотеатр:</b> @Model.Show?.Cinema?.Name </li>
+                <li><b> Фільм:</b> @Model.Show?.Film?.Name </li>
+                <li><b> Час:</b> @Model.Show?.DateTime</li>
+            </ul>
+            <p><em>@Model.Show?.SeatsLeft вільних місць доступно</em></p>
+                
+            
+
+            <form method="post">
+                <input type="hidden" asp-for="Show.Id" />
+                <div class="form-group">
+                    <label asp-for="Name">Введіть Ім'я'</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="SurName">Введіть Прізвище</label>
+                    <input type="text" asp-for="SurName" class="form-control" />
+                </div>
+                <input type="submit" id="submitButton" class="btn btn-primary" onclick="processPayment()" />
+
+            </form>
+            <form method="post" asp-page-handler="Back">
+                <input type="submit" value="Повернутись на головну" class="btn btn-primary" />
+            </form>
+            <div id="animationContainer" style="display:none; margin-top: 10px;">
+                <p id="animationText">Processing payment...</p>
+                <div class="loader"></div>
+            </div>
+
+        }
+    </div>
+</div>
+

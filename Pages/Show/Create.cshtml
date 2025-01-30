@@ -1,0 +1,50 @@
+﻿@page
+@model Cinema4.Pages.Show.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Show</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Show.DateTime" class="control-label"></label>
+                <input asp-for="Show.DateTime" class="form-control" />
+                <span asp-validation-for="Show.DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Show.FilmID" class="control-label">Фільм</label>
+                <select asp-for="Show.FilmID" class ="form-control" asp-items="ViewBag.FilmID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Show.CinemaID" class="control-label"></label>
+                <select asp-for="Show.CinemaID" class ="form-control" asp-items="ViewBag.CinemaID"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+<div>
+    <form asp-page="/Index">
+        <button type="submit" class="btn btn-secondary">Назад до списку</button>
+    </form>
+</div>
+<div>
+    <form method="post" asp-page-handler="RandomCreate">
+        <button type="submit" class="btn btn-primary">Тестове створення</button>
+    </form>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,151 @@
+html {
+    font-size: 14px;
+
+}
+
+.bg-blue{
+    background-color: azure;
+}
+
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+        
+    }
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #962f2f;
+    border-color: darkolivegreen;
+    border-radius: 10%;
+    margin: 10px;
+}
+
+    .btn-primary:hover, .btn-secondary:hover {
+        background-color: orangered;
+    }
+
+.btn-secondary {
+    color: #333;
+    background-color: #ffefef;
+    border-color: rosybrown;
+    border-radius: 10%;
+    margin: 10px;
+}
+
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+        color: orangered;
+}
+
+.centerposition {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+
+.errormessage {
+
+    color: orangered;
+    font-family: 'Times New Roman';
+    animation: shake 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0.2deg);
+    }
+
+    50% {
+        transform: rotate(-0.2deg);
+    }
+
+    100% {
+        transform: rotate(0.2deg);
+    }
+}
+
+.maincontainer {
+    background-color: rgba(255, 250, 205, 0.4);
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+}
+
+.footer {
+    background-color: white;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+
+}
+
+body {
+    margin-bottom: 60px;
+    background: repeating-conic-gradient(from 120deg at -50% 150%, lightyellow, lemonchiffon 2deg, lightyellow 4deg);
+}
+
+.smallbutton {
+    background-color: #ffebbb; /* Світлий жовтий колір */
+    border: 1px solid darkolivegreen; /* Без рамки */
+    color: #4b4b4b; /* Темний колір тексту для контрасту */
+    padding: 5px 10px; /* Внутрішні відступи */
+    text-align: center; /* Центрування тексту */
+    text-decoration: none; /* Без підкреслення */
+    display: inline-block; /* Інлайн-блок для відображення кнопок поряд */
+    font-size: 0.8em; /* Розмір шрифту */
+    border-radius: 5px; /* Закруглені краї */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тінь для глибини */
+    transition: background-color 0.3s ease; /* Анімація при наведенні */
+}
+
+.btndetails {
+    background-color: #ebffbb;
+}
+
+.btndelete {
+    background-color: #fedddd;
+}
+
+    .smallbutton:hover {
+        background-color: #ffe57f; /* Змінюємо колір на світліший при наведенні */
+        cursor: pointer; /* Курсор змінюється на pointer */
+    }
+
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite; /* Крутиться безперервно */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.sort-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.sort-arrow {
+    font-size: 12px;
+    margin-left: 5px;
+    color: gray;
+}

@@ -1,0 +1,84 @@
+﻿@page
+@model Cinema4.Pages.Show.IndexModel
+
+@{
+    ViewData["Title"] = "Сеанси";
+    string seatsSortOrder = Model.SeatsSortParam;
+    bool seatsAscending = Model.SeatsSortParam == "seats_desc";
+    string cinemaSortOrder = Model.CinemaSortParam;
+    bool cinemaAscending = Model.CinemaSortParam == "cinema_desc";
+    string filmSortOrder = Model.FilmSortParam;
+    bool filmAscending = Model.FilmSortParam == "film_desc";
+    string dateSortOrder = Model.DateSortParam;
+    bool dateAscending = Model.DateSortParam == "date_desc";
+}
+
+<h1>Сеанси</h1>
+
+<button type="button" onclick="location.href='@Url.Page("Create")'" class="btn-secondary">
+    Створити
+</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@dateSortOrder" class="sort-link">
+                    Дата<span class="sort-arrow">@((dateAscending ? "▲" : "▼"))</span>
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@filmSortOrder" class="sort-link">
+                    Фільм
+                    <span class="sort-arrow">@((filmAscending ? "▲" : "▼"))</span>
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@cinemaSortOrder" class="sort-link">
+                    Кінотеатр
+                    <span class="sort-arrow">@((cinemaAscending ? "▲" : "▼"))</span>
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@seatsSortOrder" class="sort-link">
+                    Вільних місць
+                    <span class="sort-arrow">@((seatsAscending ? "▲" : "▼"))</span>
+                </a>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Shows) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Film.Name)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Cinema.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatsLeft)
+            </td>
+            <td>
+                    <button type="button" class="smallbutton"
+                            onclick="location.href='@Url.Page("./Edit", new { id = item.Id })'">
+                        Edit
+                    </button>
+
+                    <button type="button" class="smallbutton btndetails"
+                            onclick="location.href='@Url.Page("./Details", new { id = item.Id })'">
+                        Details
+                    </button>
+
+                    <button type="button" class="smallbutton btndelete"
+                            onclick="location.href='@Url.Page("./Delete", new { id = item.Id })'">
+                        Delete
+                    </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

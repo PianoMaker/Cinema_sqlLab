@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Кіно";
+}
+<div class="row">
+    <div class="col-md-4">
+        <h1 class="display-4">Замовити квиток</h1>
+
+        <form method="post">
+            <input type="hidden" name="formId" value="filter" />
+            <div class="form-group">
+                <label asp-for="Show.FilmID" class="control-label">Фільм</label>
+                <select asp-for="Show.FilmID" class="form-control" asp-items="ViewBag.FilmID"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Show.CinemaID" class="control-label">Кінотеатр</label>
+                <select asp-for="Show.CinemaID" class="form-control" asp-items="ViewBag.CinemaID"></select>
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Відфільтрувати</button>
+        </form>
+        <form method="post">
+            <div class="form-group">
+                <input type="hidden" name="formId" value="select" />
+                <label asp-for="Show.Id" class="control-label">Сеанси</label>
+                <select asp-for="Show.Id" class="form-control" asp-items="ViewBag.ShowList"></select>
+            </div>
+            <button type="submit" class="btn btn-secondary">Обрати</button>
+        </form>
+
+    </div>
+</div>
+
